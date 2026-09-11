@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", "Be Vietnam Pro Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -49,38 +49,48 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #eef3f8;
+  --foreground: #102f4f;
+  --card: #fff;
+  --card-foreground: #102f4f;
+  --popover: #fff;
+  --popover-foreground: #102f4f;
+  --primary: #004b92;
+  --primary-foreground: #fff;
+  --primary-deep: #0a3a6b;
+  --primary-darker: #102f4f;
+  --secondary: #0b5c9e;
+  --secondary-foreground: #fff;
+  --muted: #f1f5fa;
+  --muted-foreground: #52708c;
+  --accent: #e8574a;
+  --accent-foreground: #fff;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #e1eaf3;
+  --input: #e1eaf3;
+  --ring: #004b92;
+  --radius: 0.8125rem;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --status-good: #138a5e;
+  --status-watch: #c2820c;
+  --status-risk: #e8574a;
+  --status-neutral: #52708c;
+  --status-good-text: #0d7a4e;
+  --status-watch-text: #9a6606;
+  --status-risk-text: #c8342a;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #fff;
+  --sidebar-foreground: #102f4f;
+  --sidebar-primary: #004b92;
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: #f1f5fa;
+  --sidebar-accent-foreground: #102f4f;
+  --sidebar-border: #e1eaf3;
+  --sidebar-ring: #004b92;
 }
 
 .dark {
@@ -123,8 +133,94 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "Be Vietnam Pro", "Be Vietnam Pro Fallback", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
   }
   html {
     @apply font-sans;
   }
+}
+
+/* Slim scrollbar */
+.slim-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #e1eaf3 transparent;
+}
+.slim-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.slim-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background-color: #e1eaf3;
+  border-radius: 2px;
+}
+.slim-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #c0cfe0;
+}
+
+/* Card surface */
+.card-surface {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+
+/* Dashboard watermark */
+.dashboard-watermark {
+  position: fixed;
+  inset: 0;
+  background-image: url('/sites/ioc-haiphong/shared/trong-dong-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Command banner */
+.command-banner {
+  background: linear-gradient(135deg, #0a3a6b 0%, #102f4f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+}
+
+/* Header agency block */
+.header-agency-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+}
+
+.header-agency-subtitle {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+
+/* Page enter animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* text-primary-darker utility */
+.text-primary-darker {
+  color: var(--primary-darker);
 }

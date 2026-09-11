@@ -1,9 +1,22 @@
-export default function Home() {
+import { AppShell } from '@/components/sites/ioc-haiphong/shared/AppShell'
+import { CommandBanner } from '@/components/sites/ioc-haiphong/root/CommandBanner'
+import { OverviewCard } from '@/components/sites/ioc-haiphong/root/OverviewCard'
+
+export const metadata = {
+  title: 'IOC Hải Phòng — Trung tâm điều hành thông minh',
+}
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
-    </main>
-  );
+    <AppShell>
+      <div className="page-enter mx-auto max-w-[1600px]">
+        <div className="space-y-4 p-4 lg:p-5">
+          <CommandBanner />
+          <div>
+            <OverviewCard />
+          </div>
+        </div>
+      </div>
+    </AppShell>
+  )
 }
